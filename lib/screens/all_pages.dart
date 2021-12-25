@@ -5,9 +5,7 @@ class AllPages extends StatelessWidget {
 
   int currentPage = 0;
   List<Widget> pages = [
-    Container(
-      color: Colors.red,
-    ),
+    const HomePage(),
     Container(
       color: Colors.amber,
     ),
