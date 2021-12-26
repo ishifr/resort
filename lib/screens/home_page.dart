@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: getH(500.0),
@@ -70,7 +71,7 @@ class HomePage extends StatelessWidget {
                                         controller: place,
                                         hintText: 'Place'),
                                   ),
-                                   Container(
+                                  Container(
                                     height: getH(50.0),
                                     width: getW(100.0),
                                     margin: EdgeInsets.only(left: getW(18.0)),
@@ -101,9 +102,13 @@ class HomePage extends StatelessWidget {
                                         ],
                                         onChanged: (value) {
                                           print(value);
-                                          context.read<HomeDropDownProviderTop>().changeDropDown(v: value);
+                                          context
+                                              .read<HomeDropDownProviderTop>()
+                                              .changeDropDown(v: value);
                                         },
-                                        value: context.watch<HomeDropDownProviderTop>().changeDropDown(),
+                                        value: context
+                                            .watch<HomeDropDownProviderTop>()
+                                            .changeDropDown(),
                                       ),
                                     ),
                                   ),
@@ -153,9 +158,14 @@ class HomePage extends StatelessWidget {
                                         ],
                                         onChanged: (value) {
                                           print(value);
-                                          context.read<HomeDropDownProviderBottom>().changeDropDown(v: value);
+                                          context
+                                              .read<
+                                                  HomeDropDownProviderBottom>()
+                                              .changeDropDown(v: value);
                                         },
-                                        value: context.watch<HomeDropDownProviderBottom>().changeDropDown(),
+                                        value: context
+                                            .watch<HomeDropDownProviderBottom>()
+                                            .changeDropDown(),
                                       ),
                                     ),
                                   ),
@@ -195,47 +205,101 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 28.0, left: 21.0, bottom: 18.0),
+            child: Text(
+              'Recommended',
+              style: TextStyle(
+                fontSize: getFont(22.0),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: getH(186.0),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Stack(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(left: 20.0),
+                      height: getH(180.0),
+                      width: getW(265.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fHJlc29ydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60')),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          gradient: const LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                              tileMode: TileMode.clamp,
+                              colors: [Colors.black45, Colors.transparent]),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                        left: 38.0,
+                        bottom: 18.0,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Best Resort",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: getFont(18.0),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            SizedBox(
+                              height: getH(12.0),
+                            ),
+                            Row(
+                              children: const [
+                                Text(
+                                  "Dubai",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 90.0, right: 24.0),
+                                  child: Text(
+                                    "\$700~",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                Text(
+                                  "4.9 ",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.grey,
+                                  size: 18.0,
+                                )
+                              ],
+                            ),
+                          ],
+                        )),
+                  ],
+                );
+              },
+              itemCount: 2,
+            ),
+          ),
         ],
       ),
     );
   }
 
   var _value = '1';
-  // dropDownAge(context, elements) {
-  //   SizeConfig.init(context);
-  //   return Container(
-  //     height: getH(50.0),
-  //     width: getW(100.0),
-  //     margin: EdgeInsets.only(left: getW(18.0)),
-  //     padding: EdgeInsets.only(left: getW(13.0), right: getW(6)),
-  //     decoration: BoxDecoration(
-  //         color: Colors.grey.shade800,
-  //         borderRadius: BorderRadius.circular(getW(10.0))),
-  //     child: DropdownButtonHideUnderline(
-  //       child: DropdownButton(
-  //         icon: const Icon(
-  //           Icons.keyboard_arrow_down,
-  //           color: Colors.grey,
-  //         ),
-  //         elevation: 0,
-  //         dropdownColor: Colors.grey.shade700,
-  //         hint: Text(
-  //           _value,
-  //         ),
-  //         items: [
-  //           _dropDownItem(itemValue: '1', type:'Just'),
-  //           _dropDownItem(itemValue: '2', type: 'Guests'),
-  //           _dropDownItem(itemValue: '3', type: 'Some'),
-  //         ],
-  //         onChanged: (value) {
-  //           print(value);
-
-  //         },
-  //         value:,
-  //       ),
-  //     ),
-  //   );
-  // }
 
   DropdownMenuItem<String> _dropDownItem({itemValue, type}) {
     return DropdownMenuItem(
