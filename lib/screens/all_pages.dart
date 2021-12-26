@@ -5,7 +5,7 @@ class AllPages extends StatelessWidget {
 
   int currentPage = 0;
   List<Widget> pages = [
-    const HomePage(),
+     HomePage(),
     Container(
       color: Colors.amber,
     ),
@@ -20,13 +20,9 @@ class AllPages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
-    print("print1111");
-    return ChangeNotifierProvider<ChangeScreen>(
-        create: (context) => ChangeScreen(),
-        child: Builder(builder: (context) {
-          final provider = Provider.of<ChangeScreen>(context);
-          var pro = ChangeScreen().changeScreen();
-          print("print2222");
+    
+          final provider = Provider.of<ChangeHomeProvider>(context);
+          var pro = ChangeHomeProvider().changeScreen();
           return Scaffold(
             body: pages[pro],
             bottomNavigationBar: BottomNavigationBar(
@@ -60,7 +56,7 @@ class AllPages extends StatelessWidget {
               ],
             ),
           );
-        }));
+        }
   }
 
   items({Icon? icon, Color? color}) {
@@ -75,4 +71,4 @@ class AllPages extends StatelessWidget {
       label: '',
     );
   }
-}
+

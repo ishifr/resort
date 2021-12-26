@@ -1,7 +1,17 @@
+
+
 import 'package:resort_exam/constants/export.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => ChangeHomeProvider()),
+      ChangeNotifierProvider(create: (context) => HomeDropDownProviderTop()),
+      ChangeNotifierProvider(create: (context) => HomeDropDownProviderBottom()),
+    ],
+    child:const MyApp(),
+    )
+  ); 
 }
 
 class MyApp extends StatelessWidget {
