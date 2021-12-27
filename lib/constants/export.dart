@@ -5,3 +5,5 @@ export 'package:resort_exam/screens/all_pages.dart';
 export 'package:flutter/foundation.dart';
 export 'package:resort_exam/constants/size_config.dart';
 export 'package:resort_exam/screens/home_page.dart';
+export 'package:resort_exam/widgets/home_page_initial.dart';
+export 'package:resort_exam/widgets/home_page_listview.dart';

@@ -4,7 +4,11 @@ class AllPages extends StatelessWidget {
   AllPages({Key? key}) : super(key: key);
 
   int currentPage = 0;
-  List<Widget> pages = [
+
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> pages = [
      HomePage(),
     Container(
       color: Colors.amber,
@@ -16,15 +20,16 @@ class AllPages extends StatelessWidget {
       color: Colors.greenAccent,
     ),
   ];
-
-  @override
-  Widget build(BuildContext context) {
     SizeConfig.init(context);
-    
           final provider = Provider.of<ChangeHomeProvider>(context);
           var pro = ChangeHomeProvider().changeScreen();
           return Scaffold(
-            body: pages[pro],
+            body: MultiProvider(
+              providers: [
+                ChangeNotifierProvider(create:(_) => DropDownProviderTop()),
+                ChangeNotifierProvider(create:(_) => DropDownProviderBottom()),
+              ],
+              child: pages[pro]),
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: pro,
               unselectedItemColor: Colors.grey,
