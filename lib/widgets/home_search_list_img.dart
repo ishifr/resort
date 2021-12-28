@@ -1,16 +1,19 @@
 import 'package:resort_exam/constants/export.dart';
+import 'package:resort_exam/screens/hotel_page.dart';
 
 homeSearchListImg(context) {
-  Size size = MediaQuery.of(context).size;
-  return SizedBox(
-    height: getH(125.0),
-    child: ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (context, index) {
-        return Stack(
+  return ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemBuilder: (context, index) {
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HotelPage()));
+        },
+        child: Stack(
           children: [
             Container(
-              margin: const EdgeInsets.only(left: 20.0,top: 6),
+              margin: const EdgeInsets.only(left: 20.0, top: 6),
               height: getH(124.0),
               width: getW(195.0),
               decoration: BoxDecoration(
@@ -20,7 +23,8 @@ homeSearchListImg(context) {
                     image: NetworkImage(
                         'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fHJlc29ydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60')),
               ),
-              child: Container(height: getH(118.0),
+              child: Container(
+                height: getH(118.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                   gradient: const LinearGradient(
@@ -75,9 +79,9 @@ homeSearchListImg(context) {
                   ],
                 )),
           ],
-        );
-      },
-      itemCount: 3,
-    ),
+        ),
+      );
+    },
+    itemCount: 3,
   );
 }

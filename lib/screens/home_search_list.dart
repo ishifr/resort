@@ -1,5 +1,8 @@
+
 import 'package:resort_exam/constants/export.dart';
+import 'package:resort_exam/screens/home_search_map.dart';
 import 'package:resort_exam/widgets/home_search_list_img.dart';
+import 'package:resort_exam/widgets/search_list_large.dart';
 
 class HomeSearchList extends StatelessWidget {
   const HomeSearchList({Key? key}) : super(key: key);
@@ -12,6 +15,7 @@ class HomeSearchList extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics:const ScrollPhysics(),
           child: Column(
             children: [
               SizedBox(
@@ -36,9 +40,17 @@ class HomeSearchList extends StatelessWidget {
                       'Filter',
                       style: TextStyle(fontSize: 16.0),
                     ),
-                    trailing: const Text(
-                      'Map',
-                      style: TextStyle(fontSize: 16.0),
+                    trailing: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeSearchMap()));
+                      },
+                      child:const Text(
+                        'Map',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
                     ),
                   )),
               const Divider(
@@ -63,10 +75,20 @@ class HomeSearchList extends StatelessWidget {
                           ),
                         ),
                       ),
-                      homeSearchListImg(context)
+                      SizedBox(
+                        height: getH(125.0),
+                        child:homeSearchListImg(context),
+                      ),
                     ]),
               ),
-              Text('data'),
+              Container(
+                alignment: Alignment.center,
+                height: getH(315.0 * 3),
+                width: size.width,
+                color: Colors.grey[200],
+                padding: const EdgeInsets.all(18.0),
+                child: searchListLarge(context),
+              ),
             ],
           ),
         ),
