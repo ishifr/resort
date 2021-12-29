@@ -1,4 +1,5 @@
 import 'package:resort_exam/constants/export.dart';
+import 'package:resort_exam/screens/checkout_one_page.dart';
 
 roomMainWidget(context) {
   List imgs = [
@@ -14,7 +15,7 @@ roomMainWidget(context) {
       return Stack(
         children: [
           Container(
-            margin:  EdgeInsets.only(bottom: getH(18.0),left: getW(20.0)),
+            margin: EdgeInsets.only(bottom: getH(18.0), left: getW(20.0)),
             child: Column(
               children: [
                 Container(
@@ -55,26 +56,75 @@ roomMainWidget(context) {
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         title: Text(
-                        'Standard King Room',
-                        style: TextStyle(
-                          fontSize: getFont(22.0),
-                          fontWeight: FontWeight.w600,
+                          'Standard King Room',
+                          style: TextStyle(
+                            fontSize: getFont(22.0),
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                        
-                      ),
-                      trailing: Icon(Icons.info,color: Colors.orange.shade300,),
-                      ),
-                      row(icon: Icons.price_check_outlined,text: 'Refundable'),
-                      row(icon: Icons.free_breakfast,text: 'Breakfast included'),
-                      row(icon: Icons.wifi,text: 'Wi-Fi'),
-                      row(icon: Icons.air_outlined,text: 'Air Conditioner'),
-                      row(icon: Icons.bathtub_outlined,text: 'Bath'),
-                      Row(),
-                      const Text(
-                        'Ocean View 1 king Bed\nNo prepayment',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
+                        trailing: Icon(
+                          Icons.info,
+                          color: Colors.orange.shade300,
                         ),
+                      ),
+                      row(icon: Icons.price_check_outlined, text: 'Refundable'),
+                      row(
+                          icon: Icons.free_breakfast,
+                          text: 'Breakfast included'),
+                      row(icon: Icons.wifi, text: 'Wi-Fi'),
+                      row(icon: Icons.air_outlined, text: 'Air Conditioner'),
+                      row(icon: Icons.bathtub_outlined, text: 'Bath'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RichText(
+                              text: TextSpan(children: [
+                            TextSpan(
+                                text: '\$ 1489\n',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: getFont(22.0),
+                                  fontWeight: FontWeight.w500,
+                                )),
+                            TextSpan(
+                                text: '2 nights',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: getFont(12.0),
+                                )),
+                          ])),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CheckOutOnePage()));
+                            },
+                            child: Ink(
+                              decoration: BoxDecoration(
+                                  gradient: const LinearGradient(colors: [
+                                    Color(0xffF8A170),
+                                    Color(0xffFFCD61)
+                                  ]),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: const Center(
+                                child: Text(
+                                  'Select',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              primary: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(7.0)),
+                              fixedSize: Size(getW(185.0), getH(56.0)),
+                            ),
+                          )
+                        ],
                       ),
                     ],
                   ),
@@ -82,9 +132,6 @@ roomMainWidget(context) {
               ],
             ),
           ),
-          
-          
-          
         ],
       );
     },
@@ -92,15 +139,24 @@ roomMainWidget(context) {
   );
 }
 
-row({icon,text}){
+row({icon, text}) {
   return Container(
     padding: EdgeInsets.only(bottom: getH(3.0)),
     width: getW(220.0),
     child: Row(
       children: [
-        Icon(icon,color: Colors.grey.shade400,),
-        SizedBox(width: getW(10.0),),
-        Text(text,style: TextStyle(fontSize: getFont(14.0),color: Colors.grey.shade500),)
+        Icon(
+          icon,
+          color: Colors.grey.shade400,
+        ),
+        SizedBox(
+          width: getW(10.0),
+        ),
+        Text(
+          text,
+          style:
+              TextStyle(fontSize: getFont(14.0), color: Colors.grey.shade500),
+        )
       ],
     ),
   );

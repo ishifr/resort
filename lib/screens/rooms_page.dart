@@ -15,6 +15,7 @@ class RoomsPage extends StatelessWidget {
           Expanded(
             flex: 1,
             child: ListTile(
+              horizontalTitleGap: 0.0,
               minVerticalPadding: 0.1,
               leading:const Icon(Icons.arrow_back_ios,color: Colors.black,),
               title: Text(
