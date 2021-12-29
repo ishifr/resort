@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resort_exam/constants/export.dart';
+import 'package:resort_exam/screens/rooms_page.dart';
 
 class HotelPage extends StatelessWidget {
   const HotelPage({Key? key}) : super(key: key);
@@ -77,13 +78,13 @@ class HotelPage extends StatelessWidget {
                   width: getW(45.0),
                   child: Row(
                     children: [
-                      Text(
+                     const Text(
                         '4.5 ',
                         style: TextStyle(color: Colors.white),
                       ),
                       Icon(
                         Icons.star,
-                        color: Colors.grey.shade200,
+                        color: Colors.grey.shade200,size: getW(20.0),
                       )
                     ],
                   ),
@@ -167,10 +168,10 @@ class HotelPage extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => HomeSearchList()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => RoomsPage()));
             },
             child: Ink(
               decoration: BoxDecoration(

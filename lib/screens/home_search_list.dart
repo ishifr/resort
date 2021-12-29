@@ -66,7 +66,7 @@ class HomeSearchList extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 28.0, left: 21.0, bottom: 18.0),
+                            top: 28.0, left: 21.0, bottom: 16.0),
                         child: Text(
                           'Near the beaches',
                           style: TextStyle(
@@ -76,7 +76,7 @@ class HomeSearchList extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: getH(125.0),
+                        height: getH(124.0),
                         child:homeSearchListImg(context),
                       ),
                     ]),
