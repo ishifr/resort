@@ -1,5 +1,8 @@
 import 'package:resort_exam/constants/export.dart';
 import 'package:resort_exam/logic/change_checkbox.dart';
+import 'package:resort_exam/screens/checkout_one_page.dart';
+
+import 'checkout_three_page.dart';
 
 class CheckOutTwoPage extends StatelessWidget {
   CheckOutTwoPage({Key? key}) : super(key: key);
@@ -47,11 +50,11 @@ class CheckOutTwoPage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            steps(a: true, step: '1'),
-                            line(a: true),
-                            steps(a: true, step: '2'),
-                            line(a: false),
-                            steps(a: false, step: '3'),
+                            CheckOutOnePage().steps(a: true, step: '1'),
+                            CheckOutOnePage().line(a: true),
+                            CheckOutOnePage().steps(a: true, step: '2'),
+                            CheckOutOnePage().line(a: false),
+                            CheckOutOnePage().steps(a: false, step: '3'),
                           ],
                         ),
                       ),
@@ -111,8 +114,8 @@ class CheckOutTwoPage extends StatelessWidget {
                           )),
                       ElevatedButton(
                         onPressed: () {
-                          // Navigator.push(context,
-                          //     MaterialPageRoute(builder: (context) => CheckOutOnePage()));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => CheckOutThreePage()));
                         },
                         child: Ink(
                           decoration: BoxDecoration(
@@ -146,34 +149,7 @@ class CheckOutTwoPage extends StatelessWidget {
     );
   }
 
-  steps({a, step}) {
-    return CircleAvatar(
-      radius: getW(18.0),
-      backgroundColor: a ? Colors.orange.shade300 : Colors.grey.shade300,
-      child: Text(
-        step,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: getFont(18.0),
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
-  }
-
-  line({a}) {
-    return SizedBox(
-      width: getW(25.0),
-      child: Divider(
-        // indent: getW(144.0),
-        // endIndent: getW(170.0),
-        // height: 0.0,
-        color: a ? Colors.orange.shade300 : Colors.grey.shade300,
-        thickness: getH(2.0),
-      ),
-    );
-  }
-
+ 
   textFields({hint, controller}) {
     return Container(
       height: getH(50.0),
