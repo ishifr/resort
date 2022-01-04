@@ -1,12 +1,6 @@
 import 'package:resort_exam/constants/export.dart';
 
-searchListLarge(context) {
-  List imgs = [
-    'https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-    'https://images.unsplash.com/photo-1586611292717-f828b167408c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
-    'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-  ];
-  Size size = MediaQuery.of(context).size;
+searchListLarge(context, {img, distance, aboutRoom, price}) {
   return ListView.builder(
     physics: const NeverScrollableScrollPhysics(),
     scrollDirection: Axis.vertical,
@@ -24,7 +18,7 @@ searchListLarge(context) {
                     borderRadius:
                         const BorderRadius.vertical(top: Radius.circular(20.0)),
                     image: DecorationImage(
-                        fit: BoxFit.cover, image: NetworkImage(imgs[index])),
+                        fit: BoxFit.cover, image: NetworkImage(img)),
                   ),
                   child: Container(
                     height: getH(184.0),
@@ -48,19 +42,20 @@ searchListLarge(context) {
                     borderRadius:
                         BorderRadius.vertical(bottom: Radius.circular(17.0)),
                   ),
-                  child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Somewhere, 0.7 km from center',
+                        distance,
                         style: TextStyle(
                           color: Colors.grey.shade400,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      const Text(
-                        'Ocean View 1 king Bed\nNo prepayment',
-                        style: TextStyle(
+                      Text(
+                        aboutRoom,
+                        style: const TextStyle(
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -73,13 +68,14 @@ searchListLarge(context) {
           Positioned(
             right: getW(20.0),
             bottom: getH(44.0),
-            child:const Text(
-                        '\$720',
-                        style: TextStyle(
-                          fontSize: 23.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),),
+            child: Text(
+              '\$$price',
+              style: const TextStyle(
+                fontSize: 23.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
           Positioned(
             top: getH(12.0),
             right: getH(25.0),
@@ -134,6 +130,6 @@ searchListLarge(context) {
         ],
       );
     },
-    itemCount: 3,
+    itemCount: 1,
   );
 }

@@ -1,7 +1,7 @@
 import 'package:resort_exam/constants/export.dart';
 import 'package:resort_exam/screens/hotel_page.dart';
 
-homeSearchListImg(context) {
+homeSearchListImg(context,{img}) {
   return ListView.builder(
     scrollDirection: Axis.horizontal,
     itemBuilder: (context, index) {
@@ -18,10 +18,10 @@ homeSearchListImg(context) {
               width: getW(195.0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
-                image: const DecorationImage(
+                image:  DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                        'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fHJlc29ydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60')),
+                        img)),
               ),
               child: Container(
                 height: getH(118.0),
